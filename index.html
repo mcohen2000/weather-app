@@ -8,16 +8,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Weather App</h1>
+    <div id="header">
+        <h1>Weather App</h1>
+    </div>
+    <h2>Enter a location following one of the following formats:</h2>
+    <ul>
+        <li>Latitude and Longitude (Decimal degree): "48.8567,2.3508"</li> 
+        <li>City Name: "Paris"</li>
+        <li>US Zip: "10001"</li>
+        <li>UK Postcode: "SW1"</li>
+        <li>Canada Postal Code:"G2J"</li>
+    </ul>
     <form id="searchForm">
-        <h2>Enter a location following one of the following formats:</h2>
-        <ul>
-            <li>Latitude and Longitude (Decimal degree): "48.8567,2.3508"</li> 
-            <li>City Name: "Paris"</li>
-            <li>US Zip: "10001"</li>
-            <li>UK Postcode: "SW1"</li>
-            <li>Canada Postal Code:"G2J"</li>
-        </ul>
         <input placeholder="Location" name="query"></input>
         <button id="submitButton">Submit</button>
     </form>
