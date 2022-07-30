@@ -14,7 +14,10 @@ const getWeather = async (id) => {
     const data = await res.json();
     console.log("RESPONSE DATA: ", data);
     nameDisplay.innerHTML = `${data.location.name}, ${data.location.country}`
-    if(data.location.region){nameDisplay.innerHTML = `${data.location.name}, ${data.location.region}, ${data.location.country}`}
+    if(data.location.region){nameDisplay.innerHTML = `${data.location.name}, ${data.location.region}, ${data.location.country}`};
+    const currentWeather = document.createElement("P");
+    currentWeather.innerHTML = `It is currently ${await data.current.temp_f} degrees (F) in ${data.location.name}.`;
+    weatherData.append(currentWeather);
 
   } catch (e) {
     console.log(e);
