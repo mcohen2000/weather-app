@@ -8,11 +8,17 @@ const options = {
 
   }
 };
+if (weatherData.innerHTML == ""){
+  weatherData.style.display = "none";
+}
 const getWeather = async (id) => {
   try {
     const res = await fetch(`http://api.weatherapi.com/v1/current.json?key=9b9179942dd149a887903158223007&q=${id}&aqi=no`, options);
     const data = await res.json();
     console.log("RESPONSE DATA: ", data);
+    if (data) {
+      weatherData.style.display = "flex";
+    }
     nameDisplay.innerHTML = `${data.location.name}, ${data.location.country}`
     if(data.location.region){nameDisplay.innerHTML = `${data.location.name}, ${data.location.region}, ${data.location.country}`};
     const currentWeather = document.createElement("P");
