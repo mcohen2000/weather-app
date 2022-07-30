@@ -26,5 +26,6 @@ const getWeather = async (id) => {
 searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
   console.log(searchForm.elements.query.value);
+  weatherData.innerHTML = "";
   getWeather(searchForm.elements.query.value);
 });
