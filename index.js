@@ -116,11 +116,18 @@ const getWeather = async (id) => {
         dayMaxTemp.innerHTML = `${Math.floor(
           data.forecast.forecastday[i].day.maxtemp_f
         )}°`;
+        const dayMinMaxContainer = document.createElement("DIV");
+        dayMinMaxContainer.classList += "dayMinMaxContainer";
+        const minMaxBar = document.createElement("div");
+        minMaxBar.classList += "minMaxBar";
+
+        dayMinMaxContainer.append(dayMinTemp);
+        dayMinMaxContainer.append(minMaxBar);
+        dayMinMaxContainer.append(dayMaxTemp);
 
         dayInfo.append(date);
         dayInfo.append(dayIcon);
-        dayInfo.append(dayMinTemp);
-        dayInfo.append(dayMaxTemp);
+        dayInfo.append(dayMinMaxContainer);
         daysContainer.append(dayInfo);
       }
     }
