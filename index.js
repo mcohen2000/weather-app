@@ -5,9 +5,6 @@ const options = {
   method: "GET",
   headers: {},
 };
-// if (weatherData.innerHTML == "") {
-//   weatherData.style.display = "none";
-// }
 
 const getWeather = async (id) => {
   try {
