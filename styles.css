@@ -3,6 +3,7 @@ body{
     flex-direction: column;
     align-items: center;
     font-family: sans-serif;
+    font-weight: 100;
     color: white;
     height: 100vh;
     width: 100vw;
@@ -20,7 +21,7 @@ body{
     height: 15vh;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 20%, rgba(15, 162, 211, 0.704) 100%);
+    background: rgba(56, 77, 85, 0.6);;
 }
 h1{
     width: fit-content;
@@ -40,8 +41,77 @@ form{
 }
 #weatherData{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: 85vw;
-    height: 400px;
+    margin: 1rem;
+    /* height: 400px; */
+    background-color: rgba(17, 0, 74, 0.527);
     border: 3px solid white;
+}
+#currentLocation{
+    font-size: 2.5rem;
+    margin-bottom: 0rem;
+    margin-top: 1rem;
+}
+#currentTemp{
+    font-size: 5rem;
+    margin-bottom: 0rem;
+    margin-top: .5rem;
+}
+#hourlyTitle{
+    display: flex;
+    align-self: flex-start;
+    padding-left: 3rem;
+    margin-bottom: 0rem;
+}
+#hourlyTemps{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    overflow-x: scroll;
+    max-width: 95%;
+    height: 100%;
+    margin: 0rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.189);
+    border-radius: 10px;
+}
+#hourlyTemps div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+}
+#hourlyTemps::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #1e64965c;
+	border-radius: 10px;
+    /* height: 5px; */
+    scrollbar-width: thin;
+}
+
+#hourlyTemps::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #f5f5f500;
+}
+
+#hourlyTemps::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background: linear-gradient(0deg, rgb(55, 48, 190) 0%, rgba(9,9,121,1) 30%, rgb(0, 4, 255) 100%);
+}
+.hourIcon{
+    max-height: 40px;
+    margin-bottom: 0rem;
+}
+.hourTime{
+    margin-bottom: 0rem;
+}
+.hourTemp{
+    margin-top: 0.5rem;
 }
