@@ -149,6 +149,9 @@ form button{
     border: 3px solid rgba(255, 255, 255, 0.025);
     border-radius: 10px;
 }
+#daysContainer div:first-child{
+    border-top: none;
+}
 #dailyTitle{
     display: flex;
     padding-left: 2.5rem;
@@ -160,7 +163,7 @@ form button{
     flex-direction: row;
     padding: 0rem 0.75rem;
     justify-content: space-between;
-    border-top: 1px solid white;
+    border-top: 1px solid rgba(255, 255, 255, 0.086);
 }
 #daysContainer::-webkit-scrollbar-track
 {
