@@ -82,7 +82,8 @@ form button{
 }
 #hourlyTitle{
     display: flex;
-    align-self: center;
+    padding-left: 2.5rem;
+    align-self: flex-start;
     margin-bottom: 0rem;
 }
 #hourlyTemps{
@@ -150,7 +151,8 @@ form button{
 }
 #dailyTitle{
     display: flex;
-    align-self: center;
+    padding-left: 2.5rem;
+    align-self: flex-start;
     margin-bottom: 0rem;
 }
 .dayInfo{
