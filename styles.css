@@ -58,6 +58,8 @@ form button{
 }
 #locationName{
     text-align: center;
+    -webkit-animation: slide-up 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+              animation: slide-up 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 #weatherData{
     display: flex;
@@ -69,7 +71,36 @@ form button{
     background-color: rgba(17, 0, 74, 0.527);
     /* border: 3px solid rgba(255, 255, 255, 0.014); */
     border-radius: 20px;
+    -webkit-animation: slide-up 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+              animation: slide-up 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      
+      
 }
+@-webkit-keyframes slide-up {
+    0% {
+      -webkit-transform: translateZ(700px) translateY(400px);
+              transform: translateZ(700px) translateY(400px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0) translateY(0);
+              transform: translateZ(0) translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-up {
+    0% {
+      -webkit-transform: translateZ(700px) translateY(400px);
+              transform: translateZ(700px) translateY(400px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateZ(0) translateY(0);
+              transform: translateZ(0) translateY(0);
+      opacity: 1;
+    }
+  }
 #currentLocation{
     font-size: 2.5rem;
     margin-bottom: 0rem;
