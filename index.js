@@ -1,23 +1,28 @@
 console.log("JAVASCRIPT LOADED!!!");
-const weatherData = document.querySelector("#weatherData");
-const nameDisplay = document.querySelector("#locationName");
+const weatherInfo = document.querySelector("#weatherInfo");
 const searchForm = document.querySelector("#searchForm");
 const options = {
   method: "GET",
   headers: {},
 };
-if (weatherData.innerHTML == "") {
-  weatherData.style.display = "none";
-}
+// if (weatherData.innerHTML == "") {
+//   weatherData.style.display = "none";
+// }
 
 const getWeather = async (id) => {
   try {
     const res = await fetch(
       `https://api.weatherapi.com/v1/forecast.json?key=9b9179942dd149a887903158223007&q=${id}&days=10&aqi=no&alerts=no`,
       options
-    );
-    const data = await res.json();
-    console.log("RESPONSE DATA: ", data);
+      );
+      const data = await res.json();
+      console.log("RESPONSE DATA: ", data);
+      const nameDisplay = document.createElement("H2");
+      nameDisplay.id = "locationName";
+      weatherInfo.append(nameDisplay);
+      const weatherData = document.createElement("DIV");
+      weatherData.id = "weatherData";
+      weatherInfo.append(weatherData);
     if (data) {
       weatherData.style.display = "flex";
     }
@@ -141,6 +146,6 @@ const getWeather = async (id) => {
 searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
   console.log(searchForm.elements.query.value);
-  weatherData.innerHTML = "";
+  weatherInfo.innerHTML = "";
   getWeather(searchForm.elements.query.value);
 });
