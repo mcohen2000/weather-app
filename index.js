@@ -3,25 +3,28 @@ const weatherData = document.querySelector("#weatherData");
 const nameDisplay = document.querySelector("#locationName");
 const searchForm = document.querySelector("#searchForm");
 const options = {
-  method: 'GET',
-  headers: {
-
-  }
+  method: "GET",
+  headers: {},
 };
-if (weatherData.innerHTML == ""){
+if (weatherData.innerHTML == "") {
   weatherData.style.display = "none";
 }
 
 const getWeather = async (id) => {
   try {
-    const res = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=9b9179942dd149a887903158223007&q=${id}&days=10&aqi=no&alerts=no`, options);
+    const res = await fetch(
+      `http://api.weatherapi.com/v1/forecast.json?key=9b9179942dd149a887903158223007&q=${id}&days=10&aqi=no&alerts=no`,
+      options
+    );
     const data = await res.json();
     console.log("RESPONSE DATA: ", data);
     if (data) {
       weatherData.style.display = "flex";
     }
-    nameDisplay.innerHTML = `${data.location.name}, ${data.location.country}`
-    if(data.location.region){nameDisplay.innerHTML = `${data.location.name}, ${data.location.region}, ${data.location.country}`};
+    nameDisplay.innerHTML = `${data.location.name}, ${data.location.country}`;
+    if (data.location.region) {
+      nameDisplay.innerHTML = `${data.location.name}, ${data.location.region}, ${data.location.country}`;
+    }
     const currentLocation = document.createElement("P");
     currentLocation.id = "currentLocation";
     currentLocation.innerHTML = `${data.location.name}`;
@@ -36,51 +39,94 @@ const getWeather = async (id) => {
     weatherData.append(currentDescription);
     const minMaxTemps = document.createElement("P");
     minMaxTemps.id = "minMaxTemps";
-    minMaxTemps.innerHTML = `H:${Math.floor(data.forecast.forecastday[0].day.maxtemp_f)}° L:${Math.floor(data.forecast.forecastday[0].day.mintemp_f)}°`;
+    minMaxTemps.innerHTML = `H:${Math.floor(
+      data.forecast.forecastday[0].day.maxtemp_f
+    )}° L:${Math.floor(data.forecast.forecastday[0].day.mintemp_f)}°`;
     weatherData.append(minMaxTemps);
     //make title before data
     const hourlyTitle = document.createElement("h3");
     hourlyTitle.id = "hourlyTitle";
-    hourlyTitle.innerHTML = "Hourly Forecast:";
+    hourlyTitle.innerHTML = "HOURLY FORECAST";
     weatherData.append(hourlyTitle);
     const hourlyTemps = document.createElement("div");
     hourlyTemps.id = "hourlyTemps";
     //displays hourly data on screen
-    function getHourlyData(){
-      for (let i=0; i<24; i++){
+    function getHourlyData() {
+      for (let i = 0; i < 24; i++) {
         let count = i;
         const hourInfo = document.createElement("DIV");
         hourInfo.classList += "hourInfo";
-    
+
         const hourTime = document.createElement("P");
         hourTime.classList += "hourTime";
         hourTime.innerHTML = `${i}AM`;
-        if(count==0){
+        if (count == 0) {
           hourTime.innerHTML = `12AM`;
         }
-        if(count==12){
+        if (count == 12) {
           hourTime.innerHTML = `12PM`;
         }
-        if(count>12){
-          hourTime.innerHTML = `${i-12}PM`;
+        if (count > 12) {
+          hourTime.innerHTML = `${i - 12}PM`;
         }
         const hourIcon = document.createElement("IMG");
         hourIcon.classList += "hourIcon";
         hourIcon.src = `${data.forecast.forecastday[0].hour[i].condition.icon}`;
         const hourTemp = document.createElement("P");
         hourTemp.classList += "hourTemp";
-        hourTemp.innerHTML = `${Math.floor(data.forecast.forecastday[0].hour[i].temp_f)}°`;
-    
+        hourTemp.innerHTML = `${Math.floor(
+          data.forecast.forecastday[0].hour[i].temp_f
+        )}°`;
+
         hourInfo.append(hourTime);
         hourInfo.append(hourIcon);
         hourInfo.append(hourTemp);
         hourlyTemps.append(hourInfo);
       }
     }
-    getHourlyData()
+    getHourlyData();
+    const daysContainer = document.createElement("DIV");
+    daysContainer.id = "daysContainer";
+    function get10dayData() {
+      const dailyTitle = document.createElement("h3");
+      dailyTitle.id = "dailyTitle";
+      dailyTitle.innerHTML = "10-DAY FORECAST";
+      weatherData.append(dailyTitle);
+      for (let i = 0; i < 10; i++) {
+        let count = i;
+        const dayInfo = document.createElement("DIV");
+        dayInfo.classList += "dayInfo";
 
+        const date = document.createElement("P");
+        date.classList += "date";
+        date.innerHTML = `${data.forecast.forecastday[i].date.slice(-5)}`;
+        if(count == 0){
+          date.innerHTML = `Today`;
+        }
+        const dayIcon = document.createElement("IMG");
+        dayIcon.classList += "dayIcon";
+        dayIcon.src = `${data.forecast.forecastday[i].day.condition.icon}`;
+        const dayMinTemp = document.createElement("P");
+        dayMinTemp.classList += "dayMinTemp";
+        dayMinTemp.innerHTML = `${Math.floor(
+          data.forecast.forecastday[i].day.mintemp_f
+        )}°`;
+        const dayMaxTemp = document.createElement("P");
+        dayMaxTemp.classList += "dayMaxTemp";
+        dayMaxTemp.innerHTML = `${Math.floor(
+          data.forecast.forecastday[i].day.maxtemp_f
+        )}°`;
+
+        dayInfo.append(date);
+        dayInfo.append(dayIcon);
+        dayInfo.append(dayMinTemp);
+        dayInfo.append(dayMaxTemp);
+        daysContainer.append(dayInfo);
+      }
+    }
     weatherData.append(hourlyTemps);
- 
+    get10dayData();
+    weatherData.append(daysContainer);
   } catch (e) {
     console.log(e);
   }
