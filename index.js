@@ -13,7 +13,7 @@ if (weatherData.innerHTML == "") {
 const getWeather = async (id) => {
   try {
     const res = await fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=9b9179942dd149a887903158223007&q=${id}&days=10&aqi=no&alerts=no`,
+      `https://api.weatherapi.com/v1/forecast.json?key=9b9179942dd149a887903158223007&q=${id}&days=10&aqi=no&alerts=no`,
       options
     );
     const data = await res.json();
