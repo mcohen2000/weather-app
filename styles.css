@@ -18,7 +18,7 @@ body{
     padding: none;
     margin: none;
     width: 100vw;
-    height: 15vh;
+    height: 100px;
     justify-content: center;
     align-items: center;
     background: rgba(56, 77, 85, 0.6);;
@@ -188,6 +188,19 @@ form button{
 .dayIcon{
     max-height: 40px;
     margin-bottom: 0rem;
+}
+.dayMinMaxContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.minMaxBar{
+    height: 10px;
+    width: 100px;
+    margin: 0rem 1rem;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgb(255, 255, 0) 0%, rgb(255, 128, 0) 50%, rgb(255, 0, 0) 100%);
 }
 .dayMinTemp{
     color: rgba(255, 255, 255, 0.541);
