@@ -1,6 +1,7 @@
 console.log("JAVASCRIPT LOADED!!!");
 const weatherInfo = document.querySelector("#weatherInfo");
 const searchForm = document.querySelector("#searchForm");
+const searchSubmitBtn = document.querySelector("#submitButton");
 const options = {
   method: "GET",
   headers: {},
@@ -144,5 +145,8 @@ searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
   console.log(searchForm.elements.query.value);
   weatherInfo.innerHTML = "";
+  searchSubmitBtn.style.animation = "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
   getWeather(searchForm.elements.query.value);
+  setTimeout(() => {searchSubmitBtn.style.animation = "";}, 2000);
+  
 });
