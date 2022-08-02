@@ -57,9 +57,18 @@ const getWeather = async (id) => {
     function getHourlyData() {
       for (let i = 0; i < 24; i++) {
         let count = i;
+        const currentTime = parseInt(data.location.localtime.slice(-5, -3));
+        console.log(count);
+        console.log("Time:", currentTime);
+        console.log("Count:", count);
+        //if time is before the current hour dont show data
+        if (currentTime-1 < count){
+        console.log(`KEEP #hour${i}`);
+
         const hourInfo = document.createElement("DIV");
         hourInfo.classList += "hourInfo";
-
+        hourInfo.id = `hour${i}`;
+        
         const hourTime = document.createElement("P");
         hourTime.classList += "hourTime";
         hourTime.innerHTML = `${i}AM`;
@@ -71,6 +80,9 @@ const getWeather = async (id) => {
         }
         if (count > 12) {
           hourTime.innerHTML = `${i - 12}PM`;
+        }
+        if (currentTime == count) {
+          hourTime.innerHTML = `Now`;
         }
         const hourIcon = document.createElement("IMG");
         hourIcon.classList += "hourIcon";
@@ -85,6 +97,8 @@ const getWeather = async (id) => {
         hourInfo.append(hourIcon);
         hourInfo.append(hourTemp);
         hourlyTemps.append(hourInfo);
+
+        }
       }
     }
     getHourlyData();
