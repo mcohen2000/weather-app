@@ -261,3 +261,11 @@ form button{
 .dayMinTemp{
     color: rgba(255, 255, 255, 0.541);
 }
+@media (max-width: 800px) {
+    #hourlyTitle{
+        padding-left: 1.5rem;
+    }
+    #dailyTitle{
+        padding-left: 1.5rem;
+    }
+}
