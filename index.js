@@ -99,7 +99,41 @@ const getWeather = async (id) => {
         hourlyTemps.append(hourInfo);
 
         }
+        
       }
+      const missingHours = 24-hourlyTemps.children.length;
+        for (let j = 0; j < missingHours+1; j++) {
+          let nextDayCount = j;
+
+          const hourInfo = document.createElement("DIV");
+          hourInfo.classList += "hourInfo";
+          hourInfo.id = `hour${j}`;
+        
+          const hourTime = document.createElement("P");
+          hourTime.classList += "hourTime";
+          hourTime.innerHTML = `${j}AM`;
+          if (nextDayCount == 0) {
+            hourTime.innerHTML = `12AM`;
+          }
+          if (nextDayCount == 12) {
+            hourTime.innerHTML = `12PM`;
+          }
+          if (nextDayCount > 12) {
+            hourTime.innerHTML = `${j - 12}PM`;
+          }
+
+          const hourIcon = document.createElement("IMG");
+          hourIcon.classList += "hourIcon";
+          hourIcon.src = `${data.forecast.forecastday[1].hour[j].condition.icon}`;
+          const hourTemp = document.createElement("P");
+          hourTemp.classList += "hourTemp";
+          hourTemp.innerHTML = `${Math.floor(data.forecast.forecastday[1].hour[j].temp_f)}°`;
+
+          hourInfo.append(hourTime);
+          hourInfo.append(hourIcon);
+          hourInfo.append(hourTemp);
+          hourlyTemps.append(hourInfo);
+        }
     }
     getHourlyData();
     const daysContainer = document.createElement("DIV");
