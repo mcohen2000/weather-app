@@ -10,17 +10,17 @@ const options = {
 const getWeather = async (id) => {
   try {
     const res = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=9b9179942dd149a887903158223007&q=${id}&days=10&aqi=no&alerts=no`,
+      `https://api.weatherapi.com/v1/forecast.json?key=9b9179942dd149a887903158223007&q=${id}&days=10&aqi=yes&alerts=no`,
       options
-      );
-      const data = await res.json();
-      console.log("RESPONSE DATA: ", data);
-      const nameDisplay = document.createElement("H2");
-      nameDisplay.id = "locationName";
-      weatherInfo.append(nameDisplay);
-      const weatherData = document.createElement("DIV");
-      weatherData.id = "weatherData";
-      weatherInfo.append(weatherData);
+    );
+    const data = await res.json();
+    console.log("RESPONSE DATA: ", data);
+    const nameDisplay = document.createElement("H2");
+    nameDisplay.id = "locationName";
+    weatherInfo.append(nameDisplay);
+    const weatherData = document.createElement("DIV");
+    weatherData.id = "weatherData";
+    weatherInfo.append(weatherData);
     if (data) {
       weatherData.style.display = "flex";
     }
@@ -62,80 +62,79 @@ const getWeather = async (id) => {
         console.log("Time:", currentTime);
         console.log("Count:", count);
         //if time is before the current hour dont show data
-        if (currentTime-1 < count){
-        console.log(`KEEP #hour${i}`);
-
-        const hourInfo = document.createElement("DIV");
-        hourInfo.classList += "hourInfo";
-        hourInfo.id = `hour${i}`;
-        
-        const hourTime = document.createElement("P");
-        hourTime.classList += "hourTime";
-        hourTime.innerHTML = `${i}AM`;
-        if (count == 0) {
-          hourTime.innerHTML = `12AM`;
-        }
-        if (count == 12) {
-          hourTime.innerHTML = `12PM`;
-        }
-        if (count > 12) {
-          hourTime.innerHTML = `${i - 12}PM`;
-        }
-        if (currentTime == count) {
-          hourTime.innerHTML = `Now`;
-        }
-        const hourIcon = document.createElement("IMG");
-        hourIcon.classList += "hourIcon";
-        hourIcon.src = `${data.forecast.forecastday[0].hour[i].condition.icon}`;
-        const hourTemp = document.createElement("P");
-        hourTemp.classList += "hourTemp";
-        hourTemp.innerHTML = `${Math.floor(
-          data.forecast.forecastday[0].hour[i].temp_f
-        )}°`;
-
-        hourInfo.append(hourTime);
-        hourInfo.append(hourIcon);
-        hourInfo.append(hourTemp);
-        hourlyTemps.append(hourInfo);
-
-        }
-        
-      }
-      const missingHours = 24-hourlyTemps.children.length;
-        for (let j = 0; j < missingHours+1; j++) {
-          let nextDayCount = j;
+        if (currentTime - 1 < count) {
+          console.log(`KEEP #hour${i}`);
 
           const hourInfo = document.createElement("DIV");
           hourInfo.classList += "hourInfo";
-          hourInfo.id = `hour${j}`;
-        
+          hourInfo.id = `hour${i}`;
+
           const hourTime = document.createElement("P");
           hourTime.classList += "hourTime";
-          hourTime.innerHTML = `${j}AM`;
-          if (nextDayCount == 0) {
+          hourTime.innerHTML = `${i}AM`;
+          if (count == 0) {
             hourTime.innerHTML = `12AM`;
           }
-          if (nextDayCount == 12) {
+          if (count == 12) {
             hourTime.innerHTML = `12PM`;
           }
-          if (nextDayCount > 12) {
-            hourTime.innerHTML = `${j - 12}PM`;
+          if (count > 12) {
+            hourTime.innerHTML = `${i - 12}PM`;
           }
-
+          if (currentTime == count) {
+            hourTime.innerHTML = `Now`;
+          }
           const hourIcon = document.createElement("IMG");
           hourIcon.classList += "hourIcon";
-          hourIcon.src = `${data.forecast.forecastday[1].hour[j].condition.icon}`;
+          hourIcon.src = `${data.forecast.forecastday[0].hour[i].condition.icon}`;
           const hourTemp = document.createElement("P");
           hourTemp.classList += "hourTemp";
-          hourTemp.innerHTML = `${Math.floor(data.forecast.forecastday[1].hour[j].temp_f)}°`;
+          hourTemp.innerHTML = `${Math.floor(
+            data.forecast.forecastday[0].hour[i].temp_f
+          )}°`;
 
           hourInfo.append(hourTime);
           hourInfo.append(hourIcon);
           hourInfo.append(hourTemp);
           hourlyTemps.append(hourInfo);
         }
+      }
+      const missingHours = 24 - hourlyTemps.children.length;
+      for (let j = 0; j < missingHours + 1; j++) {
+        let nextDayCount = j;
+
+        const hourInfo = document.createElement("DIV");
+        hourInfo.classList += "hourInfo";
+        hourInfo.id = `hour${j}`;
+
+        const hourTime = document.createElement("P");
+        hourTime.classList += "hourTime";
+        hourTime.innerHTML = `${j}AM`;
+        if (nextDayCount == 0) {
+          hourTime.innerHTML = `12AM`;
+        }
+        if (nextDayCount == 12) {
+          hourTime.innerHTML = `12PM`;
+        }
+        if (nextDayCount > 12) {
+          hourTime.innerHTML = `${j - 12}PM`;
+        }
+
+        const hourIcon = document.createElement("IMG");
+        hourIcon.classList += "hourIcon";
+        hourIcon.src = `${data.forecast.forecastday[1].hour[j].condition.icon}`;
+        const hourTemp = document.createElement("P");
+        hourTemp.classList += "hourTemp";
+        hourTemp.innerHTML = `${Math.floor(
+          data.forecast.forecastday[1].hour[j].temp_f
+        )}°`;
+
+        hourInfo.append(hourTime);
+        hourInfo.append(hourIcon);
+        hourInfo.append(hourTemp);
+        hourlyTemps.append(hourInfo);
+      }
     }
-    getHourlyData();
     const daysContainer = document.createElement("DIV");
     daysContainer.id = "daysContainer";
     function get10dayData() {
@@ -151,7 +150,7 @@ const getWeather = async (id) => {
         const date = document.createElement("P");
         date.classList += "date";
         date.innerHTML = `${data.forecast.forecastday[i].date.slice(-5)}`;
-        if(count == 0){
+        if (count == 0) {
           date.innerHTML = `Today`;
         }
         const dayIcon = document.createElement("IMG");
@@ -182,9 +181,67 @@ const getWeather = async (id) => {
         daysContainer.append(dayInfo);
       }
     }
+    const aqiContainer = document.createElement("DIV");
+    aqiContainer.id = "aqiContainer";
+    function getAqiData() {
+      const aqiTitle = document.createElement("h3");
+      aqiTitle.id = "aqiTitle";
+      aqiTitle.innerHTML = "AIR QUALITY";
+      weatherData.append(aqiTitle);
+      
+      const aqiInfo = document.createElement("DIV");
+      aqiInfo.id = "aqiInfo";
+      
+      const aqiBar = document.createElement("DIV");
+      aqiBar.id = "aqiBar";
+      
+      const aqiBarMarker = document.createElement("DIV");
+      aqiBarMarker.id = "aqiBarMarker";
+      aqiBar.append(aqiBarMarker);
+
+      const aqiValue = document.createElement("P");
+      aqiValue.classList += "aqiValue";
+      if (data.current.air_quality["us-epa-index"] === 1) {
+        aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Good`;
+        aqiBarMarker.style.marginLeft = "0%";
+        aqiBarMarker.style.background = "rgb(0, 228, 0)";
+      }
+      if (data.current.air_quality["us-epa-index"] === 2) {
+        aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Moderate`;
+        aqiBarMarker.style.marginLeft = "13%";
+        aqiBarMarker.style.background = "rgb(255, 255, 0)";
+      }
+      if (data.current.air_quality["us-epa-index"] === 3) {
+        aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Unhealthy for Sensitive Groups`;
+        aqiBarMarker.style.marginLeft = "26%";
+        aqiBarMarker.style.background = "rgb(255, 126, 0)";
+      }
+      if (data.current.air_quality["us-epa-index"] === 4) {
+        aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Unhealthy`;
+        aqiBarMarker.style.marginLeft = "39%";
+        aqiBarMarker.style.background = "rgb(255, 0, 0)";
+      }
+      if (data.current.air_quality["us-epa-index"] === 5) {
+        aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Very Unhealthy`;
+        aqiBarMarker.style.marginLeft = "52%";
+        aqiBarMarker.style.background = "rgb(153, 0, 76)";
+      }
+      if (data.current.air_quality["us-epa-index"] === 6) {
+        aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Hazardous`;
+        aqiBarMarker.style.marginLeft = "65%";
+        aqiBarMarker.style.background = "rgb(128, 0, 36)";
+      }
+      
+      aqiInfo.append(aqiBar);
+      aqiInfo.append(aqiValue);
+      aqiContainer.append(aqiInfo)
+    }
+    getHourlyData();
     weatherData.append(hourlyTemps);
     get10dayData();
     weatherData.append(daysContainer);
+    getAqiData();
+    weatherData.append(aqiContainer);
   } catch (e) {
     console.log(e);
   }
@@ -193,8 +250,10 @@ searchForm.addEventListener("submit", function (e) {
   e.preventDefault();
   console.log(searchForm.elements.query.value);
   weatherInfo.innerHTML = "";
-  searchSubmitBtn.style.animation = "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+  searchSubmitBtn.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
   getWeather(searchForm.elements.query.value);
-  setTimeout(() => {searchSubmitBtn.style.animation = "";}, 2000);
-  
+  setTimeout(() => {
+    searchSubmitBtn.style.animation = "";
+  }, 2000);
 });
