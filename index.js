@@ -198,42 +198,51 @@ const getWeather = async (id) => {
       const aqiBarMarker = document.createElement("DIV");
       aqiBarMarker.id = "aqiBarMarker";
       aqiBar.append(aqiBarMarker);
-
+      
       const aqiValue = document.createElement("P");
       aqiValue.classList += "aqiValue";
+      const aqiDescription = document.createElement("P");
+      aqiDescription.classList += "aqiDescription";
       if (data.current.air_quality["us-epa-index"] === 1) {
         aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Good`;
         aqiBarMarker.style.marginLeft = "0%";
         aqiBarMarker.style.background = "rgb(0, 228, 0)";
+        aqiDescription.innerHTML = `Air quality is satisfactory, and air pollution poses little or no risk.`;
       }
       if (data.current.air_quality["us-epa-index"] === 2) {
         aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Moderate`;
         aqiBarMarker.style.marginLeft = "13%";
         aqiBarMarker.style.background = "rgb(255, 255, 0)";
+        aqiDescription.innerHTML = `Air quality is acceptable. However, there may be a risk for some people, particularly those who are unusually sensitive to air pollution.`;
       }
       if (data.current.air_quality["us-epa-index"] === 3) {
         aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Unhealthy for Sensitive Groups`;
         aqiBarMarker.style.marginLeft = "26%";
         aqiBarMarker.style.background = "rgb(255, 126, 0)";
+        aqiDescription.innerHTML = `Members of sensitive groups may experience health effects. The general public is less likely to be affected.`;
       }
       if (data.current.air_quality["us-epa-index"] === 4) {
         aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Unhealthy`;
         aqiBarMarker.style.marginLeft = "39%";
         aqiBarMarker.style.background = "rgb(255, 0, 0)";
+        aqiDescription.innerHTML = `Some members of the general public may experience health effects; members of sensitive groups may experience more serious health effects.`;
       }
       if (data.current.air_quality["us-epa-index"] === 5) {
         aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Very Unhealthy`;
         aqiBarMarker.style.marginLeft = "52%";
         aqiBarMarker.style.background = "rgb(153, 0, 76)";
+        aqiDescription.innerHTML = `Health alert: The risk of health effects is increased for everyone.`;
       }
       if (data.current.air_quality["us-epa-index"] === 6) {
         aqiValue.innerHTML = `US EPA Index Level ${data.current.air_quality["us-epa-index"]} - Hazardous`;
         aqiBarMarker.style.marginLeft = "65%";
         aqiBarMarker.style.background = "rgb(128, 0, 36)";
+        aqiDescription.innerHTML = `Health warning of emergency conditions: everyone is more likely to be affected.`;
       }
       
       aqiInfo.append(aqiBar);
       aqiInfo.append(aqiValue);
+      aqiInfo.append(aqiDescription);
       aqiContainer.append(aqiInfo)
     }
     getHourlyData();
