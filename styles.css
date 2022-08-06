@@ -261,12 +261,18 @@ form button{
 .dayMinTemp{
     color: rgba(255, 255, 255, 0.541);
 }
+#aqiTitle{
+    display: flex;
+    padding-left: 2.5rem;
+    align-self: flex-start;
+    margin-bottom: 0rem;
+}
 #aqiContainer{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 47.5%;
+    width: 95%;
     height: 100%;
     margin: 1rem;
     padding: 0rem 0rem;
@@ -280,11 +286,12 @@ form button{
     align-items: center;
     flex-direction: column;
     padding: 1rem;
-    width: 50%;
+    width: 100%;
 }
 #aqiBar{
     height: 10px;
     width: 90%;
+    margin: 1rem;
     z-index: 0;
     background: linear-gradient(90deg, rgb(0, 228, 0) 0%, rgb(255, 255, 0) 13%, rgb(255, 126, 0) 26%, rgb(255, 0, 0) 39%, rgb(153, 0, 76) 52%, rgb(128, 0, 36) 65%, rgb(128, 0, 36) 100%);
     border-radius: 10px;
@@ -302,12 +309,19 @@ form button{
 }
 .aqiValue{
     text-align: center;
+    font-weight: 700;
+}
+.aqiDescription{
+    text-align: center;
 }
 @media (max-width: 800px) {
     #hourlyTitle{
         padding-left: 1.5rem;
     }
     #dailyTitle{
+        padding-left: 1.5rem;
+    }
+    #aqiTitle{
         padding-left: 1.5rem;
     }
 }
