@@ -261,6 +261,48 @@ form button{
 .dayMinTemp{
     color: rgba(255, 255, 255, 0.541);
 }
+#aqiContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 47.5%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+}
+#aqiInfo{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    width: 50%;
+}
+#aqiBar{
+    height: 10px;
+    width: 90%;
+    z-index: 0;
+    background: linear-gradient(90deg, rgb(0, 228, 0) 0%, rgb(255, 255, 0) 13%, rgb(255, 126, 0) 26%, rgb(255, 0, 0) 39%, rgb(153, 0, 76) 52%, rgb(128, 0, 36) 65%, rgb(128, 0, 36) 100%);
+    border-radius: 10px;
+}
+#aqiBarMarker{
+    height: 15px;
+    width: 15px;
+    margin-top: -5px;
+    padding-top: -1rem;
+    z-index: 1;
+    margin-left: -2%;
+    border-radius: 20px;
+    background: transparent;
+    border: 3px solid white;
+}
+.aqiValue{
+    text-align: center;
+}
 @media (max-width: 800px) {
     #hourlyTitle{
         padding-left: 1.5rem;
