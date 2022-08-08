@@ -140,6 +140,9 @@ form button{
     align-self: flex-start;
     margin-bottom: 0rem;
 }
+#hourlyTitleIcon{
+    padding-right: 0.5rem;
+}
 #hourlyTemps{
     display: flex;
     flex-direction: row;
@@ -213,6 +216,9 @@ form button{
     align-self: flex-start;
     margin-bottom: 0rem;
 }
+#dailyTitleIcon{
+    padding-right: 0.5rem;
+}
 .dayInfo{
     display: flex;
     flex-direction: row;
@@ -267,6 +273,9 @@ form button{
     align-self: flex-start;
     margin-bottom: 0rem;
 }
+#aqiTitleIcon{
+    padding-right: 0.5rem;
+}
 #aqiContainer{
     display: flex;
     flex-direction: column;
@@ -320,6 +329,9 @@ form button{
     padding-left: 2.5rem;
     align-self: flex-start;
     margin-bottom: 0rem;
+}
+#uvTitleIcon{
+    padding-right: 0.5rem;
 }
 #uvContainer{
     display: flex;

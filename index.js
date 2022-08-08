@@ -49,7 +49,11 @@ const getWeather = async (id) => {
     //make title before data
     const hourlyTitle = document.createElement("h3");
     hourlyTitle.id = "hourlyTitle";
-    hourlyTitle.innerHTML = "HOURLY FORECAST";
+    const hourlyTitleIcon = document.createElement("i");
+    hourlyTitleIcon.id = "hourlyTitleIcon";
+    hourlyTitleIcon.classList += "bi bi-clock";
+    hourlyTitle.append(hourlyTitleIcon);
+    hourlyTitle.innerHTML += "HOURLY FORECAST";
     weatherData.append(hourlyTitle);
     const hourlyTemps = document.createElement("div");
     hourlyTemps.id = "hourlyTemps";
@@ -140,7 +144,11 @@ const getWeather = async (id) => {
     function get10dayData() {
       const dailyTitle = document.createElement("h3");
       dailyTitle.id = "dailyTitle";
-      dailyTitle.innerHTML = "10-DAY FORECAST";
+      const dailyTitleIcon = document.createElement("i");
+      dailyTitleIcon.classList += "bi bi-calendar3";
+      dailyTitleIcon.id = "dailyTitleIcon";
+      dailyTitle.append(dailyTitleIcon);
+      dailyTitle.innerHTML += "10-DAY FORECAST";
       weatherData.append(dailyTitle);
       for (let i = 0; i < 10; i++) {
         let count = i;
@@ -186,19 +194,23 @@ const getWeather = async (id) => {
     function getAqiData() {
       const aqiTitle = document.createElement("h3");
       aqiTitle.id = "aqiTitle";
-      aqiTitle.innerHTML = "AIR QUALITY";
+      const aqiTitleIcon = document.createElement("i");
+      aqiTitleIcon.classList += "bi bi-lungs";
+      aqiTitleIcon.id = "aqiTitleIcon";
+      aqiTitle.append(aqiTitleIcon);
+      aqiTitle.innerHTML += "AIR QUALITY";
       weatherData.append(aqiTitle);
-      
+
       const aqiInfo = document.createElement("DIV");
       aqiInfo.id = "aqiInfo";
-      
+
       const aqiBar = document.createElement("DIV");
       aqiBar.id = "aqiBar";
-      
+
       const aqiBarMarker = document.createElement("DIV");
       aqiBarMarker.id = "aqiBarMarker";
       aqiBar.append(aqiBarMarker);
-      
+
       const aqiValue = document.createElement("P");
       aqiValue.classList += "aqiValue";
       const aqiDescription = document.createElement("P");
@@ -239,30 +251,34 @@ const getWeather = async (id) => {
         aqiBarMarker.style.background = "rgb(128, 0, 36)";
         aqiDescription.innerHTML = `Health warning of emergency conditions: everyone is more likely to be affected.`;
       }
-      
+
       aqiInfo.append(aqiBar);
       aqiInfo.append(aqiValue);
       aqiInfo.append(aqiDescription);
-      aqiContainer.append(aqiInfo)
+      aqiContainer.append(aqiInfo);
     }
     const uvContainer = document.createElement("DIV");
     uvContainer.id = "uvContainer";
     function getUvData() {
       const uvTitle = document.createElement("h3");
       uvTitle.id = "uvTitle";
-      uvTitle.innerHTML = "UV INDEX";
+      const uvTitleIcon = document.createElement("i");
+      uvTitleIcon.classList += "bi bi-sun";
+      uvTitleIcon.id = "uvTitleIcon";
+      uvTitle.append(uvTitleIcon);
+      uvTitle.innerHTML += "UV INDEX";
       weatherData.append(uvTitle);
-      
+
       const uvInfo = document.createElement("DIV");
       uvInfo.id = "uvInfo";
-      
+
       const uvBar = document.createElement("DIV");
       uvBar.id = "uvBar";
-      
+
       const uvBarMarker = document.createElement("DIV");
       uvBarMarker.id = "uvBarMarker";
       uvBar.append(uvBarMarker);
-      
+
       const uvValue = document.createElement("P");
       uvValue.classList += "uvValue";
       const uvDescription = document.createElement("P");
@@ -297,11 +313,11 @@ const getWeather = async (id) => {
         uvBarMarker.style.background = "rgb(108, 73, 201)";
         uvDescription.innerHTML = `Extra protection needed. Be careful outside, especially during late morning through mid-afternoon. If your shadow is shorter than you, seek shade and wear protective clothing, a wide-brimmed hat, and sunglasses, and generously apply a minimum of  SPF-15, broad-spectrum sunscreen on exposed skin.`;
       }
-      
+
       uvInfo.append(uvBar);
       uvInfo.append(uvValue);
       uvInfo.append(uvDescription);
-      uvContainer.append(uvInfo)
+      uvContainer.append(uvInfo);
     }
     getHourlyData();
     weatherData.append(hourlyTemps);
