@@ -315,6 +315,60 @@ form button{
     text-align: center;
     padding: 0rem 0.75rem;
 }
+#uvTitle{
+    display: flex;
+    padding-left: 2.5rem;
+    align-self: flex-start;
+    margin-bottom: 0rem;
+}
+#uvContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+}
+#uvInfo{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+}
+#uvBar{
+    height: 10px;
+    width: 90%;
+    margin: 1rem;
+    z-index: 0;
+    background: linear-gradient(90deg, rgb(41, 149, 1) 0%, rgb(247, 228, 1) 15%, rgb(249, 89, 1) 30%, rgb(217, 0, 17) 45%, rgb(108, 73, 201) 60%, rgb(108, 73, 201) 100%);
+    border-radius: 10px;
+}
+#uvBarMarker{
+    height: 15px;
+    width: 15px;
+    margin-top: -5px;
+    padding-top: -1rem;
+    z-index: 1;
+    margin-left: -2%;
+    border-radius: 20px;
+    background: transparent;
+    border: 3px solid white;
+}
+.uvValue{
+    text-align: center;
+    font-weight: 700;
+}
+.uvDescription{
+    text-align: center;
+    padding: 0rem 0.75rem;
+}
 @media (max-width: 800px) {
     #hourlyTitle{
         padding-left: 1.5rem;
@@ -323,6 +377,9 @@ form button{
         padding-left: 1.5rem;
     }
     #aqiTitle{
+        padding-left: 1.5rem;
+    }
+    #uvTitle{
         padding-left: 1.5rem;
     }
 }
