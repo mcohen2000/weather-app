@@ -245,12 +245,72 @@ const getWeather = async (id) => {
       aqiInfo.append(aqiDescription);
       aqiContainer.append(aqiInfo)
     }
+    const uvContainer = document.createElement("DIV");
+    uvContainer.id = "uvContainer";
+    function getUvData() {
+      const uvTitle = document.createElement("h3");
+      uvTitle.id = "uvTitle";
+      uvTitle.innerHTML = "UV INDEX";
+      weatherData.append(uvTitle);
+      
+      const uvInfo = document.createElement("DIV");
+      uvInfo.id = "uvInfo";
+      
+      const uvBar = document.createElement("DIV");
+      uvBar.id = "uvBar";
+      
+      const uvBarMarker = document.createElement("DIV");
+      uvBarMarker.id = "uvBarMarker";
+      uvBar.append(uvBarMarker);
+      
+      const uvValue = document.createElement("P");
+      uvValue.classList += "uvValue";
+      const uvDescription = document.createElement("P");
+      uvDescription.classList += "uvDescription";
+      if (data.current.uv >= 0 && data.current.uv <= 2) {
+        uvValue.innerHTML = `Current UV Index: ${data.current.uv} - Low`;
+        uvBarMarker.style.marginLeft = "0%";
+        uvBarMarker.style.background = "rgb(41, 149, 1)";
+        uvDescription.innerHTML = `No protection needed. You can safely stay outside using minimal sun protection.`;
+      }
+      if (data.current.uv >= 3 && data.current.uv <= 5) {
+        uvValue.innerHTML = `Current UV Index: ${data.current.uv} - Moderate`;
+        uvBarMarker.style.marginLeft = "15%";
+        uvBarMarker.style.background = "rgb(247, 228, 1)";
+        uvDescription.innerHTML = `Protection needed. Seek shade during late morning through mid-afternoon. When outside, generously apply broad-spectrum SPF-15 or higher sunscreen on exposed skin, and wear protective clothing, a wide-brimmed hat, and sunglasses.`;
+      }
+      if (data.current.uv >= 6 && data.current.uv <= 7) {
+        uvValue.innerHTML = `Current UV Index: ${data.current.uv} - High`;
+        uvBarMarker.style.marginLeft = "30%";
+        uvBarMarker.style.background = "rgb(249, 89, 1)";
+        uvDescription.innerHTML = `Protection needed. Seek shade during late morning through mid-afternoon. When outside, generously apply broad-spectrum SPF-15 or higher sunscreen on exposed skin, and wear protective clothing, a wide-brimmed hat, and sunglasses.`;
+      }
+      if (data.current.uv >= 8 && data.current.uv <= 10) {
+        uvValue.innerHTML = `Current UV Index: ${data.current.uv} - Very High`;
+        uvBarMarker.style.marginLeft = "45%";
+        uvBarMarker.style.background = "rgb(217, 0, 17)";
+        uvDescription.innerHTML = `Extra protection needed. Be careful outside, especially during late morning through mid-afternoon. If your shadow is shorter than you, seek shade and wear protective clothing, a wide-brimmed hat, and sunglasses, and generously apply a minimum of  SPF-15, broad-spectrum sunscreen on exposed skin.`;
+      }
+      if (data.current.uv >= 11) {
+        uvValue.innerHTML = `Current UV Index: ${data.current.uv} - Extreme`;
+        uvBarMarker.style.marginLeft = "60%";
+        uvBarMarker.style.background = "rgb(108, 73, 201)";
+        uvDescription.innerHTML = `Extra protection needed. Be careful outside, especially during late morning through mid-afternoon. If your shadow is shorter than you, seek shade and wear protective clothing, a wide-brimmed hat, and sunglasses, and generously apply a minimum of  SPF-15, broad-spectrum sunscreen on exposed skin.`;
+      }
+      
+      uvInfo.append(uvBar);
+      uvInfo.append(uvValue);
+      uvInfo.append(uvDescription);
+      uvContainer.append(uvInfo)
+    }
     getHourlyData();
     weatherData.append(hourlyTemps);
     get10dayData();
     weatherData.append(daysContainer);
     getAqiData();
     weatherData.append(aqiContainer);
+    getUvData();
+    weatherData.append(uvContainer);
   } catch (e) {
     console.log(e);
   }
