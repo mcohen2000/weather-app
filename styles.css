@@ -381,6 +381,94 @@ form button{
     text-align: center;
     padding: 0rem 0.75rem;
 }
+#windTitle{
+    display: flex;
+    padding-left: 2.5rem;
+    align-self: flex-start;
+    margin-bottom: 0rem;
+}
+#windTitleIcon{
+    padding-right: 0.5rem;
+}
+#windContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+}
+#windInfo{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem;
+    width: 100%;
+}
+#windChart{
+    height: 150px;
+    width: 150px;
+    margin: 1rem;
+    z-index: 0;
+    border: 1px solid white;
+    border-radius: 150px;
+}
+#windChartMarker{
+    position: absolute;
+    margin-left: 75px;
+    margin-top: 2px;
+    height: 145px;
+    width: 3px;
+    /* padding-top: -1rem; */
+    z-index: 1;
+    border-radius: 100px;
+    background: white;
+    transform: rotateZ(0deg);
+}
+#windChartMarkerArrow{
+    /* margin-top: -3px; */
+    margin-left: -6px;
+    padding-top: -15px;
+    width: 0; 
+    height: 0; 
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    border-bottom: 7.5px solid white;
+}
+#windChartNorth{
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 71px;
+    color: white;
+}
+#windChartSouth{
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 71px;
+    color: white;
+}
+#windChartEast{
+    position: absolute;
+    margin-top: 66px;
+    margin-left: 135px;
+    color: white;
+}
+#windChartWest{
+    position: absolute;
+    margin-top: 66px;
+    margin-left: 6px;
+    color: white;
+}
+.windValue{
+    text-align: center;
+    font-weight: 700;
+}
 @media (max-width: 800px) {
     #hourlyTitle{
         padding-left: 1.5rem;
@@ -392,6 +480,9 @@ form button{
         padding-left: 1.5rem;
     }
     #uvTitle{
+        padding-left: 1.5rem;
+    }
+    #windTitle{
         padding-left: 1.5rem;
     }
 }
