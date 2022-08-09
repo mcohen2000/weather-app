@@ -469,6 +469,145 @@ form button{
     text-align: center;
     font-weight: 700;
 }
+#rainContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+}
+#rainTitle{
+    display: flex;
+    padding-left: 2.5rem;
+    align-self: flex-start;
+    margin-bottom: 0rem;
+}
+#rainTitleIcon{
+    padding-right: 0.5rem;
+}
+.rainValue{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+}
+.rainDescription{
+    text-align: center;
+    padding: 0rem 0.75rem;
+}
+#feelsLikeContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+}
+#feelsLikeTitle{
+    display: flex;
+    padding-left: 2.5rem;
+    align-self: flex-start;
+    margin-bottom: 0rem;
+}
+#feelsLikeTitleIcon{
+    padding-right: 0.5rem;
+}
+.feelsLikeValue{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+}
+#humidityContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+}
+#humidityTitle{
+    display: flex;
+    padding-left: 2.5rem;
+    align-self: flex-start;
+    margin-bottom: 0rem;
+}
+#humidityTitleIcon{
+    padding-right: 0.5rem;
+}
+.humidityValue{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+}
+#visibilityContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+}
+#visibilityTitle{
+    display: flex;
+    padding-left: 2.5rem;
+    align-self: flex-start;
+    margin-bottom: 0rem;
+}
+#visibilityTitleIcon{
+    padding-right: 0.5rem;
+}
+.visibilityValue{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+}
+#pressureContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 100%;
+    margin: 1rem;
+    padding: 0rem 0rem;
+    background-color: rgba(4, 4, 124, 0.395);
+    border: 3px solid rgba(255, 255, 255, 0.025);
+    border-radius: 10px;
+}
+#pressureTitle{
+    display: flex;
+    padding-left: 2.5rem;
+    align-self: flex-start;
+    margin-bottom: 0rem;
+}
+#pressureTitleIcon{
+    padding-right: 0.5rem;
+}
+.pressureValue{
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+}
 @media (max-width: 800px) {
     #hourlyTitle{
         padding-left: 1.5rem;
@@ -483,6 +622,21 @@ form button{
         padding-left: 1.5rem;
     }
     #windTitle{
+        padding-left: 1.5rem;
+    }
+    #rainTitle{
+        padding-left: 1.5rem;
+    }
+    #feelsLikeTitle{
+        padding-left: 1.5rem;
+    }
+    #humidityTitle{
+        padding-left: 1.5rem;
+    }
+    #visibilityTitle{
+        padding-left: 1.5rem;
+    }
+    #pressureTitle{
         padding-left: 1.5rem;
     }
 }
