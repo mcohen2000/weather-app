@@ -414,57 +414,123 @@ const getWeather = async (id) => {
       if (data.current.wind_dir === "SSE"){
         windChartMarker.style.transform = "rotateZ(337.5deg)";
       }
-      // if (data.current.wind_dir === "N"){
-      //   windChartMarker.style.transform = "rotateZ(0deg)";
-      // }
-      // if (data.current.wind_dir === "NNE"){
-      //   windChartMarker.style.transform = "rotateZ(22.5deg)";
-      // }
-      // if (data.current.wind_dir === "NE"){
-      //   windChartMarker.style.transform = "rotateZ(45deg)";
-      // }
-      // if (data.current.wind_dir === "ENE"){
-      //   windChartMarker.style.transform = "rotateZ(67.5deg)";
-      // }
-      // if (data.current.wind_dir === "E"){
-      //   windChartMarker.style.transform = "rotateZ(90deg)";
-      // }
-      // if (data.current.wind_dir === "ESE"){
-      //   windChartMarker.style.transform = "rotateZ(112.5deg)";
-      // }
-      // if (data.current.wind_dir === "SE"){
-      //   windChartMarker.style.transform = "rotateZ(135deg)";
-      // }
-      // if (data.current.wind_dir === "SSE"){
-      //   windChartMarker.style.transform = "rotateZ(157.5deg)";
-      // }
-      // if (data.current.wind_dir === "S"){
-      //   windChartMarker.style.transform = "rotateZ(180deg)";
-      // }
-      // if (data.current.wind_dir === "SSW"){
-      //   windChartMarker.style.transform = "rotateZ(202.5deg)";
-      // }
-      // if (data.current.wind_dir === "SW"){
-      //   windChartMarker.style.transform = "rotateZ(225deg)";
-      // }
-      // if (data.current.wind_dir === "WSW"){
-      //   windChartMarker.style.transform = "rotateZ(247.5deg)";
-      // }
-      // if (data.current.wind_dir === "W"){
-      //   windChartMarker.style.transform = "rotateZ(270deg)";
-      // }
-      // if (data.current.wind_dir === "WNW"){
-      //   windChartMarker.style.transform = "rotateZ(292.5deg)";
-      // }
-      // if (data.current.wind_dir === "NW"){
-      //   windChartMarker.style.transform = "rotateZ(315deg)";
-      // }
-      // if (data.current.wind_dir === "NNW"){
-      //   windChartMarker.style.transform = "rotateZ(337.5deg)";
-      // }
       windInfo.append(windChart);
       windInfo.append(windValue);
       windContainer.append(windInfo);
+    }
+    const rainContainer = document.createElement("DIV");
+    rainContainer.id = "rainContainer";
+    function getRainData() {
+      const rainTitle = document.createElement("h3");
+      rainTitle.id = "rainTitle";
+      const rainTitleIcon = document.createElement("i");
+      rainTitleIcon.classList += "bi bi-cloud-rain";
+      rainTitleIcon.id = "rainTitleIcon";
+      rainTitle.append(rainTitleIcon);
+      rainTitle.innerHTML += "RAINFALL";
+      weatherData.append(rainTitle);
+
+      const rainInfo = document.createElement("DIV");
+      rainInfo.id = "rainInfo";
+
+      const rainValue = document.createElement("P");
+      rainValue.classList += "rainValue";
+      rainValue.innerHTML = `Today's Rain Forecast: ${data.forecast.forecastday[0].day.totalprecip_in}"`;
+      const rainDescription = document.createElement("P");
+      rainDescription.classList += "rainDescription";
+      rainDescription.innerHTML = `Tomorrow's Rain Forecast: ${data.forecast.forecastday[1].day.totalprecip_in}"`;
+
+      rainInfo.append(rainValue);
+      rainInfo.append(rainDescription);
+      rainContainer.append(rainInfo);
+    }
+    const feelsLikeContainer = document.createElement("DIV");
+    feelsLikeContainer.id = "feelsLikeContainer";
+    function getFeelsLikeData() {
+      const feelsLikeTitle = document.createElement("h3");
+      feelsLikeTitle.id = "feelsLikeTitle";
+      const feelsLikeTitleIcon = document.createElement("i");
+      feelsLikeTitleIcon.classList += "bi bi-thermometer-half";
+      feelsLikeTitleIcon.id = "feelsLikeTitleIcon";
+      feelsLikeTitle.append(feelsLikeTitleIcon);
+      feelsLikeTitle.innerHTML += "FEELS LIKE";
+      weatherData.append(feelsLikeTitle);
+
+      const feelsLikeInfo = document.createElement("DIV");
+      feelsLikeInfo.id = "feelsLikeInfo";
+
+      const feelsLikeValue = document.createElement("P");
+      feelsLikeValue.classList += "feelsLikeValue";
+      feelsLikeValue.innerHTML = `${data.current.feelslike_f}°`;
+
+      feelsLikeInfo.append(feelsLikeValue);
+      feelsLikeContainer.append(feelsLikeInfo);
+    }
+    const humidityContainer = document.createElement("DIV");
+    humidityContainer.id = "humidityContainer";
+    function getHumidityData() {
+      const humidityTitle = document.createElement("h3");
+      humidityTitle.id = "humidityTitle";
+      const humidityTitleIcon = document.createElement("i");
+      humidityTitleIcon.classList += "bi bi-moisture";
+      humidityTitleIcon.id = "humidityTitleIcon";
+      humidityTitle.append(humidityTitleIcon);
+      humidityTitle.innerHTML += "HUMIDITY";
+      weatherData.append(humidityTitle);
+
+      const humidityInfo = document.createElement("DIV");
+      humidityInfo.id = "humidityInfo";
+
+      const humidityValue = document.createElement("P");
+      humidityValue.classList += "humidityValue";
+      humidityValue.innerHTML = `${data.current.humidity}%`;
+
+      humidityInfo.append(humidityValue);
+      humidityContainer.append(humidityInfo);
+    }
+    const visibilityContainer = document.createElement("DIV");
+    visibilityContainer.id = "visibilityContainer";
+    function getVisibilityData() {
+      const visibilityTitle = document.createElement("h3");
+      visibilityTitle.id = "visibilityTitle";
+      const visibilityTitleIcon = document.createElement("i");
+      visibilityTitleIcon.classList += "bi bi-eye-fill";
+      visibilityTitleIcon.id = "visibilityTitleIcon";
+      visibilityTitle.append(visibilityTitleIcon);
+      visibilityTitle.innerHTML += "VISIBILITY";
+      weatherData.append(visibilityTitle);
+
+      const visibilityInfo = document.createElement("DIV");
+      visibilityInfo.id = "visibilityInfo";
+
+      const visibilityValue = document.createElement("P");
+      visibilityValue.classList += "visibilityValue";
+      visibilityValue.innerHTML = `${data.current.vis_miles} mi`;
+
+      visibilityInfo.append(visibilityValue);
+      visibilityContainer.append(visibilityInfo);
+    }
+    const pressureContainer = document.createElement("DIV");
+    pressureContainer.id = "pressureContainer";
+    function getPressureData() {
+      const pressureTitle = document.createElement("h3");
+      pressureTitle.id = "pressureTitle";
+      const pressureTitleIcon = document.createElement("i");
+      pressureTitleIcon.classList += "bi bi-speedometer";
+      pressureTitleIcon.id = "pressureTitleIcon";
+      pressureTitle.append(pressureTitleIcon);
+      pressureTitle.innerHTML += "PRESSURE";
+      weatherData.append(pressureTitle);
+
+      const pressureInfo = document.createElement("DIV");
+      pressureInfo.id = "pressureInfo";
+
+      const pressureValue = document.createElement("P");
+      pressureValue.classList += "pressureValue";
+      pressureValue.innerHTML = `${data.current.pressure_in} inHg`;
+
+      pressureInfo.append(pressureValue);
+      pressureContainer.append(pressureInfo);
     }
     getHourlyData();
     weatherData.append(hourlyTemps);
@@ -476,6 +542,16 @@ const getWeather = async (id) => {
     weatherData.append(uvContainer);
     getWindData();
     weatherData.append(windContainer);
+    getRainData();
+    weatherData.append(rainContainer);
+    getFeelsLikeData();
+    weatherData.append(feelsLikeContainer);
+    getHumidityData();
+    weatherData.append(humidityContainer);
+    getVisibilityData();
+    weatherData.append(visibilityContainer);
+    getPressureData();
+    weatherData.append(pressureContainer);
   } catch (e) {
     console.log(e);
   }
