@@ -319,6 +319,153 @@ const getWeather = async (id) => {
       uvInfo.append(uvDescription);
       uvContainer.append(uvInfo);
     }
+    const windContainer = document.createElement("DIV");
+    windContainer.id = "windContainer";
+    function getWindData() {
+      const windTitle = document.createElement("h3");
+      windTitle.id = "windTitle";
+      const windTitleIcon = document.createElement("i");
+      windTitleIcon.classList += "bi bi-wind";
+      windTitleIcon.id = "windTitleIcon";
+      windTitle.append(windTitleIcon);
+      windTitle.innerHTML += "WIND";
+      weatherData.append(windTitle);
+
+      const windInfo = document.createElement("DIV");
+      windInfo.id = "windInfo";
+
+      const windChart = document.createElement("DIV");
+      windChart.id = "windChart";
+
+      const windChartMarker = document.createElement("DIV");
+      windChartMarker.id = "windChartMarker";
+      
+      const windChartNorth = document.createElement("P");
+      windChartNorth.id = "windChartNorth";
+      windChartNorth.innerHTML = "N";
+      windChart.append(windChartNorth);
+      const windChartSouth = document.createElement("P");
+      windChartSouth.id = "windChartSouth";
+      windChartSouth.innerHTML = "S";
+      windChart.append(windChartSouth);
+      const windChartEast = document.createElement("P");
+      windChartEast.id = "windChartEast";
+      windChartEast.innerHTML = "E";
+      windChart.append(windChartEast);
+      const windChartWest = document.createElement("P");
+      windChartWest.id = "windChartWest";
+      windChartWest.innerHTML = "W";
+      windChart.append(windChartWest);
+
+      const windChartMarkerArrow = document.createElement("DIV");
+      windChartMarkerArrow.id = "windChartMarkerArrow";
+      windChartMarker.append(windChartMarkerArrow);
+      windChart.append(windChartMarker);
+
+      const windValue = document.createElement("P");
+      windValue.classList += "windValue";
+      windValue.innerHTML = `${data.current.wind_mph} MPH`;
+
+      if (data.current.wind_dir === "N"){
+        windChartMarker.style.transform = "rotateZ(0deg)";
+      }
+      if (data.current.wind_dir === "SSW"){
+        windChartMarker.style.transform = "rotateZ(22.5deg)";
+      }
+      if (data.current.wind_dir === "SW"){
+        windChartMarker.style.transform = "rotateZ(45deg)";
+      }
+      if (data.current.wind_dir === "WNW"){
+        windChartMarker.style.transform = "rotateZ(67.5deg)";
+      }
+      if (data.current.wind_dir === "W"){
+        windChartMarker.style.transform = "rotateZ(90deg)";
+      }
+      if (data.current.wind_dir === "WNW"){
+        windChartMarker.style.transform = "rotateZ(112.5deg)";
+      }
+      if (data.current.wind_dir === "NW"){
+        windChartMarker.style.transform = "rotateZ(135deg)";
+      }
+      if (data.current.wind_dir === "NNW"){
+        windChartMarker.style.transform = "rotateZ(157.5deg)";
+      }
+      if (data.current.wind_dir === "N"){
+        windChartMarker.style.transform = "rotateZ(180deg)";
+      }
+      if (data.current.wind_dir === "NNE"){
+        windChartMarker.style.transform = "rotateZ(202.5deg)";
+      }
+      if (data.current.wind_dir === "NE"){
+        windChartMarker.style.transform = "rotateZ(225deg)";
+      }
+      if (data.current.wind_dir === "ENE"){
+        windChartMarker.style.transform = "rotateZ(247.5deg)";
+      }
+      if (data.current.wind_dir === "E"){
+        windChartMarker.style.transform = "rotateZ(270deg)";
+      }
+      if (data.current.wind_dir === "ESE"){
+        windChartMarker.style.transform = "rotateZ(292.5deg)";
+      }
+      if (data.current.wind_dir === "SE"){
+        windChartMarker.style.transform = "rotateZ(315deg)";
+      }
+      if (data.current.wind_dir === "SSE"){
+        windChartMarker.style.transform = "rotateZ(337.5deg)";
+      }
+      // if (data.current.wind_dir === "N"){
+      //   windChartMarker.style.transform = "rotateZ(0deg)";
+      // }
+      // if (data.current.wind_dir === "NNE"){
+      //   windChartMarker.style.transform = "rotateZ(22.5deg)";
+      // }
+      // if (data.current.wind_dir === "NE"){
+      //   windChartMarker.style.transform = "rotateZ(45deg)";
+      // }
+      // if (data.current.wind_dir === "ENE"){
+      //   windChartMarker.style.transform = "rotateZ(67.5deg)";
+      // }
+      // if (data.current.wind_dir === "E"){
+      //   windChartMarker.style.transform = "rotateZ(90deg)";
+      // }
+      // if (data.current.wind_dir === "ESE"){
+      //   windChartMarker.style.transform = "rotateZ(112.5deg)";
+      // }
+      // if (data.current.wind_dir === "SE"){
+      //   windChartMarker.style.transform = "rotateZ(135deg)";
+      // }
+      // if (data.current.wind_dir === "SSE"){
+      //   windChartMarker.style.transform = "rotateZ(157.5deg)";
+      // }
+      // if (data.current.wind_dir === "S"){
+      //   windChartMarker.style.transform = "rotateZ(180deg)";
+      // }
+      // if (data.current.wind_dir === "SSW"){
+      //   windChartMarker.style.transform = "rotateZ(202.5deg)";
+      // }
+      // if (data.current.wind_dir === "SW"){
+      //   windChartMarker.style.transform = "rotateZ(225deg)";
+      // }
+      // if (data.current.wind_dir === "WSW"){
+      //   windChartMarker.style.transform = "rotateZ(247.5deg)";
+      // }
+      // if (data.current.wind_dir === "W"){
+      //   windChartMarker.style.transform = "rotateZ(270deg)";
+      // }
+      // if (data.current.wind_dir === "WNW"){
+      //   windChartMarker.style.transform = "rotateZ(292.5deg)";
+      // }
+      // if (data.current.wind_dir === "NW"){
+      //   windChartMarker.style.transform = "rotateZ(315deg)";
+      // }
+      // if (data.current.wind_dir === "NNW"){
+      //   windChartMarker.style.transform = "rotateZ(337.5deg)";
+      // }
+      windInfo.append(windChart);
+      windInfo.append(windValue);
+      windContainer.append(windInfo);
+    }
     getHourlyData();
     weatherData.append(hourlyTemps);
     get10dayData();
@@ -327,6 +474,8 @@ const getWeather = async (id) => {
     weatherData.append(aqiContainer);
     getUvData();
     weatherData.append(uvContainer);
+    getWindData();
+    weatherData.append(windContainer);
   } catch (e) {
     console.log(e);
   }
