@@ -319,6 +319,8 @@ const getWeather = async (id) => {
       uvInfo.append(uvDescription);
       uvContainer.append(uvInfo);
     }
+    const windWrapper = document.createElement("DIV");
+    windWrapper.id = "windWrapper";
     const windContainer = document.createElement("DIV");
     windContainer.id = "windContainer";
     function getWindData() {
@@ -329,7 +331,7 @@ const getWeather = async (id) => {
       windTitleIcon.id = "windTitleIcon";
       windTitle.append(windTitleIcon);
       windTitle.innerHTML += "WIND";
-      weatherData.append(windTitle);
+      windWrapper.append(windTitle);
 
       const windInfo = document.createElement("DIV");
       windInfo.id = "windInfo";
@@ -417,7 +419,10 @@ const getWeather = async (id) => {
       windInfo.append(windChart);
       windInfo.append(windValue);
       windContainer.append(windInfo);
+      windWrapper.append(windContainer);
     }
+    const rainWrapper = document.createElement("DIV");
+    rainWrapper.id = "rainWrapper";
     const rainContainer = document.createElement("DIV");
     rainContainer.id = "rainContainer";
     function getRainData() {
@@ -428,7 +433,7 @@ const getWeather = async (id) => {
       rainTitleIcon.id = "rainTitleIcon";
       rainTitle.append(rainTitleIcon);
       rainTitle.innerHTML += "RAINFALL";
-      weatherData.append(rainTitle);
+      rainWrapper.append(rainTitle);
 
       const rainInfo = document.createElement("DIV");
       rainInfo.id = "rainInfo";
@@ -443,7 +448,10 @@ const getWeather = async (id) => {
       rainInfo.append(rainValue);
       rainInfo.append(rainDescription);
       rainContainer.append(rainInfo);
+      rainWrapper.append(rainContainer);
     }
+    const feelsLikeWrapper = document.createElement("DIV");
+    feelsLikeWrapper.id = "feelsLikeWrapper";
     const feelsLikeContainer = document.createElement("DIV");
     feelsLikeContainer.id = "feelsLikeContainer";
     function getFeelsLikeData() {
@@ -454,7 +462,7 @@ const getWeather = async (id) => {
       feelsLikeTitleIcon.id = "feelsLikeTitleIcon";
       feelsLikeTitle.append(feelsLikeTitleIcon);
       feelsLikeTitle.innerHTML += "FEELS LIKE";
-      weatherData.append(feelsLikeTitle);
+      feelsLikeWrapper.append(feelsLikeTitle);
 
       const feelsLikeInfo = document.createElement("DIV");
       feelsLikeInfo.id = "feelsLikeInfo";
@@ -465,7 +473,10 @@ const getWeather = async (id) => {
 
       feelsLikeInfo.append(feelsLikeValue);
       feelsLikeContainer.append(feelsLikeInfo);
+      feelsLikeWrapper.append(feelsLikeContainer);
     }
+    const humidityWrapper = document.createElement("DIV");
+    humidityWrapper.id = "humidityWrapper";
     const humidityContainer = document.createElement("DIV");
     humidityContainer.id = "humidityContainer";
     function getHumidityData() {
@@ -476,7 +487,7 @@ const getWeather = async (id) => {
       humidityTitleIcon.id = "humidityTitleIcon";
       humidityTitle.append(humidityTitleIcon);
       humidityTitle.innerHTML += "HUMIDITY";
-      weatherData.append(humidityTitle);
+      humidityWrapper.append(humidityTitle);
 
       const humidityInfo = document.createElement("DIV");
       humidityInfo.id = "humidityInfo";
@@ -487,7 +498,10 @@ const getWeather = async (id) => {
 
       humidityInfo.append(humidityValue);
       humidityContainer.append(humidityInfo);
+      humidityWrapper.append(humidityContainer);
     }
+    const visibilityWrapper = document.createElement("DIV");
+    visibilityWrapper.id = "visibilityWrapper";
     const visibilityContainer = document.createElement("DIV");
     visibilityContainer.id = "visibilityContainer";
     function getVisibilityData() {
@@ -498,7 +512,7 @@ const getWeather = async (id) => {
       visibilityTitleIcon.id = "visibilityTitleIcon";
       visibilityTitle.append(visibilityTitleIcon);
       visibilityTitle.innerHTML += "VISIBILITY";
-      weatherData.append(visibilityTitle);
+      visibilityWrapper.append(visibilityTitle);
 
       const visibilityInfo = document.createElement("DIV");
       visibilityInfo.id = "visibilityInfo";
@@ -509,7 +523,10 @@ const getWeather = async (id) => {
 
       visibilityInfo.append(visibilityValue);
       visibilityContainer.append(visibilityInfo);
+      visibilityWrapper.append(visibilityContainer);
     }
+    const pressureWrapper = document.createElement("DIV");
+    pressureWrapper.id = "pressureWrapper";
     const pressureContainer = document.createElement("DIV");
     pressureContainer.id = "pressureContainer";
     function getPressureData() {
@@ -520,7 +537,7 @@ const getWeather = async (id) => {
       pressureTitleIcon.id = "pressureTitleIcon";
       pressureTitle.append(pressureTitleIcon);
       pressureTitle.innerHTML += "PRESSURE";
-      weatherData.append(pressureTitle);
+      pressureWrapper.append(pressureTitle);
 
       const pressureInfo = document.createElement("DIV");
       pressureInfo.id = "pressureInfo";
@@ -531,7 +548,11 @@ const getWeather = async (id) => {
 
       pressureInfo.append(pressureValue);
       pressureContainer.append(pressureInfo);
+      pressureWrapper.append(pressureContainer);
     }
+    const extraWeatherData = document.createElement("DIV");
+    extraWeatherData.id = "extraWeatherData";
+
     getHourlyData();
     weatherData.append(hourlyTemps);
     get10dayData();
@@ -541,17 +562,18 @@ const getWeather = async (id) => {
     getUvData();
     weatherData.append(uvContainer);
     getWindData();
-    weatherData.append(windContainer);
+    extraWeatherData.append(windWrapper);
     getRainData();
-    weatherData.append(rainContainer);
+    extraWeatherData.append(rainWrapper);
     getFeelsLikeData();
-    weatherData.append(feelsLikeContainer);
+    extraWeatherData.append(feelsLikeWrapper);
     getHumidityData();
-    weatherData.append(humidityContainer);
+    extraWeatherData.append(humidityWrapper);
     getVisibilityData();
-    weatherData.append(visibilityContainer);
+    extraWeatherData.append(visibilityWrapper);
     getPressureData();
-    weatherData.append(pressureContainer);
+    extraWeatherData.append(pressureWrapper);
+    weatherData.append(extraWeatherData);
   } catch (e) {
     console.log(e);
   }
