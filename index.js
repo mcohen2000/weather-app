@@ -9,10 +9,7 @@ const options = {
 
 const getWeather = async (id) => {
   try {
-    const res = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=9b9179942dd149a887903158223007&q=${id}&days=10&aqi=yes&alerts=no`,
-      options
-    );
+    const res = await fetch(`./data/${id}.json`);
     const data = await res.json();
     console.log("RESPONSE DATA: ", data);
     const nameDisplay = document.createElement("H2");
@@ -62,9 +59,6 @@ const getWeather = async (id) => {
       for (let i = 0; i < 24; i++) {
         let count = i;
         const currentTime = parseInt(data.location.localtime.slice(-5, -3));
-        console.log(count);
-        console.log("Time:", currentTime);
-        console.log("Count:", count);
         //if time is before the current hour dont show data
         if (currentTime - 1 < count) {
           console.log(`KEEP #hour${i}`);
@@ -341,7 +335,7 @@ const getWeather = async (id) => {
 
       const windChartMarker = document.createElement("DIV");
       windChartMarker.id = "windChartMarker";
-      
+
       const windChartNorth = document.createElement("P");
       windChartNorth.id = "windChartNorth";
       windChartNorth.innerHTML = "N";
@@ -368,54 +362,58 @@ const getWeather = async (id) => {
       windValue.classList += "windValue";
       windValue.innerHTML = `${data.current.wind_mph} MPH`;
 
-      if (data.current.wind_dir === "N"){
-        windChartMarker.style.transform = "rotateZ(0deg)";
-      }
-      if (data.current.wind_dir === "SSW"){
-        windChartMarker.style.transform = "rotateZ(22.5deg)";
-      }
-      if (data.current.wind_dir === "SW"){
-        windChartMarker.style.transform = "rotateZ(45deg)";
-      }
-      if (data.current.wind_dir === "WNW"){
-        windChartMarker.style.transform = "rotateZ(67.5deg)";
-      }
-      if (data.current.wind_dir === "W"){
-        windChartMarker.style.transform = "rotateZ(90deg)";
-      }
-      if (data.current.wind_dir === "WNW"){
-        windChartMarker.style.transform = "rotateZ(112.5deg)";
-      }
-      if (data.current.wind_dir === "NW"){
-        windChartMarker.style.transform = "rotateZ(135deg)";
-      }
-      if (data.current.wind_dir === "NNW"){
-        windChartMarker.style.transform = "rotateZ(157.5deg)";
-      }
-      if (data.current.wind_dir === "N"){
-        windChartMarker.style.transform = "rotateZ(180deg)";
-      }
-      if (data.current.wind_dir === "NNE"){
-        windChartMarker.style.transform = "rotateZ(202.5deg)";
-      }
-      if (data.current.wind_dir === "NE"){
-        windChartMarker.style.transform = "rotateZ(225deg)";
-      }
-      if (data.current.wind_dir === "ENE"){
-        windChartMarker.style.transform = "rotateZ(247.5deg)";
-      }
-      if (data.current.wind_dir === "E"){
-        windChartMarker.style.transform = "rotateZ(270deg)";
-      }
-      if (data.current.wind_dir === "ESE"){
-        windChartMarker.style.transform = "rotateZ(292.5deg)";
-      }
-      if (data.current.wind_dir === "SE"){
-        windChartMarker.style.transform = "rotateZ(315deg)";
-      }
-      if (data.current.wind_dir === "SSE"){
-        windChartMarker.style.transform = "rotateZ(337.5deg)";
-      }
+      // if (data.current.wind_dir === "S"){
+      //   windChartMarker.style.transform = "rotateZ(0deg)";
+      // }
+      // if (data.current.wind_dir === "SSW"){
+      //   windChartMarker.style.transform = "rotateZ(22.5deg)";
+      // }
+      // if (data.current.wind_dir === "SW"){
+      //   windChartMarker.style.transform = "rotateZ(45deg)";
+      // }
+      // if (data.current.wind_dir === "WSW"){
+      //   windChartMarker.style.transform = "rotateZ(67.5deg)";
+      // }
+      // if (data.current.wind_dir === "W"){
+      //   windChartMarker.style.transform = "rotateZ(90deg)";
+      // }
+      // if (data.current.wind_dir === "WNW"){
+      //   windChartMarker.style.transform = "rotateZ(112.5deg)";
+      // }
+      // if (data.current.wind_dir === "NW"){
+      //   windChartMarker.style.transform = "rotateZ(135deg)";
+      // }
+      // if (data.current.wind_dir === "NNW"){
+      //   windChartMarker.style.transform = "rotateZ(157.5deg)";
+      // }
+      // if (data.current.wind_dir === "N"){
+      //   windChartMarker.style.transform = "rotateZ(180deg)";
+      // }
+      // if (data.current.wind_dir === "NNE"){
+      //   windChartMarker.style.transform = "rotateZ(202.5deg)";
+      // }
+      // if (data.current.wind_dir === "NE"){
+      //   windChartMarker.style.transform = "rotateZ(225deg)";
+      // }
+      // if (data.current.wind_dir === "ENE"){
+      //   windChartMarker.style.transform = "rotateZ(247.5deg)";
+      // }
+      // if (data.current.wind_dir === "E"){
+      //   windChartMarker.style.transform = "rotateZ(270deg)";
+      // }
+      // if (data.current.wind_dir === "ESE"){
+      //   windChartMarker.style.transform = "rotateZ(292.5deg)";
+      // }
+      // if (data.current.wind_dir === "SE"){
+      //   windChartMarker.style.transform = "rotateZ(315deg)";
+      // }
+      // if (data.current.wind_dir === "SSE"){
+      //   windChartMarker.style.transform = "rotateZ(337.5deg)";
+      // }
+      windChartMarker.style.transform = `rotateZ(${
+        data.current.wind_degree + 180
+      }deg)`;
+
       windInfo.append(windChart);
       windInfo.append(windValue);
       windContainer.append(windInfo);
@@ -578,14 +576,160 @@ const getWeather = async (id) => {
     console.log(e);
   }
 };
-searchForm.addEventListener("submit", function (e) {
+const austinButton = document.getElementById("austinButton");
+austinButton.addEventListener("click", function (e) {
   e.preventDefault();
-  console.log(searchForm.elements.query.value);
   weatherInfo.innerHTML = "";
-  searchSubmitBtn.style.animation =
+  austinButton.style.animation =
     "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-  getWeather(searchForm.elements.query.value);
+
+  // local json data
+  getWeather("AustinTX");
+
   setTimeout(() => {
-    searchSubmitBtn.style.animation = "";
+    austinButton.style.animation = "";
   }, 2000);
 });
+const londonButton = document.getElementById("londonButton");
+londonButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  londonButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("LondonUK");
+
+  setTimeout(() => {
+    londonButton.style.animation = "";
+  }, 2000);
+});
+const losAngelesButton = document.getElementById("losAngelesButton");
+losAngelesButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  losAngelesButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("LosAngelesCA");
+
+  setTimeout(() => {
+    losAngelesButton.style.animation = "";
+  }, 2000);
+});
+const madridButton = document.getElementById("madridButton");
+madridButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  madridButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("MadridSpain");
+
+  setTimeout(() => {
+    madridButton.style.animation = "";
+  }, 2000);
+});
+const miamiButton = document.getElementById("miamiButton");
+miamiButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  miamiButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("MiamiFL");
+
+  setTimeout(() => {
+    miamiButton.style.animation = "";
+  }, 2000);
+});
+const newYorkButton = document.getElementById("newYorkButton");
+newYorkButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  newYorkButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("NewYorkNY");
+
+  setTimeout(() => {
+    newYorkButton.style.animation = "";
+  }, 2000);
+});
+const parisButton = document.getElementById("parisButton");
+parisButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  parisButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("ParisFrance");
+
+  setTimeout(() => {
+    parisButton.style.animation = "";
+  }, 2000);
+});
+const philadelphiaButton = document.getElementById("philadelphiaButton");
+philadelphiaButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  philadelphiaButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("PhiladelphiaPA");
+
+  setTimeout(() => {
+    philadelphiaButton.style.animation = "";
+  }, 2000);
+});
+const portlandButton = document.getElementById("portlandButton");
+portlandButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  portlandButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("PortlandOR");
+
+  setTimeout(() => {
+    portlandButton.style.animation = "";
+  }, 2000);
+});
+const saoPauloButton = document.getElementById("saoPauloButton");
+saoPauloButton.addEventListener("click", function (e) {
+  e.preventDefault();
+  weatherInfo.innerHTML = "";
+  saoPauloButton.style.animation =
+    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+  // local json data
+  getWeather("SaoPauloBrazil");
+
+  setTimeout(() => {
+    saoPauloButton.style.animation = "";
+  }, 2000);
+});
+// searchForm.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   console.log(searchForm.elements.query.value);
+//   weatherInfo.innerHTML = "";
+//   searchSubmitBtn.style.animation =
+//     "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+//   // api using search form
+//     getWeather(searchForm.elements.query.value);
+
+//   // local json data
+//   // getWeather("AustinTX");
+
+//   setTimeout(() => {
+//     searchSubmitBtn.style.animation = "";
+//   }, 2000);
+// });
