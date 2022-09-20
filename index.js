@@ -61,7 +61,7 @@ const getWeather = async (id) => {
         const currentTime = parseInt(data.location.localtime.slice(-5, -3));
         //if time is before the current hour dont show data
         if (currentTime - 1 < count) {
-          console.log(`KEEP #hour${i}`);
+          // console.log(`KEEP #hour${i}`);
 
           const hourInfo = document.createElement("DIV");
           hourInfo.classList += "hourInfo";
@@ -576,145 +576,40 @@ const getWeather = async (id) => {
     console.log(e);
   }
 };
-const austinButton = document.getElementById("austinButton");
-austinButton.addEventListener("click", function (e) {
-  e.preventDefault();
+const locationSelectList = document.getElementById("location-list");
+locationSelectList.addEventListener("change", function (e) {
+  console.log(e.target.value);
   weatherInfo.innerHTML = "";
-  austinButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("AustinTX");
-
-  setTimeout(() => {
-    austinButton.style.animation = "";
-  }, 2000);
-});
-const londonButton = document.getElementById("londonButton");
-londonButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  londonButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("LondonUK");
-
-  setTimeout(() => {
-    londonButton.style.animation = "";
-  }, 2000);
-});
-const losAngelesButton = document.getElementById("losAngelesButton");
-losAngelesButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  losAngelesButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("LosAngelesCA");
-
-  setTimeout(() => {
-    losAngelesButton.style.animation = "";
-  }, 2000);
-});
-const madridButton = document.getElementById("madridButton");
-madridButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  madridButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("MadridSpain");
-
-  setTimeout(() => {
-    madridButton.style.animation = "";
-  }, 2000);
-});
-const miamiButton = document.getElementById("miamiButton");
-miamiButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  miamiButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("MiamiFL");
-
-  setTimeout(() => {
-    miamiButton.style.animation = "";
-  }, 2000);
-});
-const newYorkButton = document.getElementById("newYorkButton");
-newYorkButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  newYorkButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("NewYorkNY");
-
-  setTimeout(() => {
-    newYorkButton.style.animation = "";
-  }, 2000);
-});
-const parisButton = document.getElementById("parisButton");
-parisButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  parisButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("ParisFrance");
-
-  setTimeout(() => {
-    parisButton.style.animation = "";
-  }, 2000);
-});
-const philadelphiaButton = document.getElementById("philadelphiaButton");
-philadelphiaButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  philadelphiaButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("PhiladelphiaPA");
-
-  setTimeout(() => {
-    philadelphiaButton.style.animation = "";
-  }, 2000);
-});
-const portlandButton = document.getElementById("portlandButton");
-portlandButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  portlandButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("PortlandOR");
-
-  setTimeout(() => {
-    portlandButton.style.animation = "";
-  }, 2000);
-});
-const saoPauloButton = document.getElementById("saoPauloButton");
-saoPauloButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  weatherInfo.innerHTML = "";
-  saoPauloButton.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // local json data
-  getWeather("SaoPauloBrazil");
-
-  setTimeout(() => {
-    saoPauloButton.style.animation = "";
-  }, 2000);
+  if (e.target.value === "Austin, TX"){
+    getWeather("AustinTX");
+  }
+  if (e.target.value === "London, UK"){
+    getWeather("LondonUK");
+  }
+  if (e.target.value === "Los Angeles, CA"){
+    getWeather("LosAngelesCA");
+  }
+  if (e.target.value === "Madrid, Spain"){
+    getWeather("MadridSpain");
+  }
+  if (e.target.value === "Miami, FL"){
+    getWeather("MiamiFL");
+  }
+  if (e.target.value === "New York, NY"){
+    getWeather("NewYorkNY");
+  }
+  if (e.target.value === "Paris, France"){
+    getWeather("ParisFrance");
+  }
+  if (e.target.value === "Philadelphia, PA"){
+    getWeather("PhiladelphiaPA");
+  }
+  if (e.target.value === "Portland, OR"){
+    getWeather("PortlandOR");
+  }
+  if (e.target.value === "Sao Paulo, Brazil"){
+    getWeather("SaoPauloBrazil");
+  }
 });
 // searchForm.addEventListener("submit", function (e) {
 //   e.preventDefault();
