@@ -24,18 +24,20 @@
         <input placeholder="Location" name="query"></input>
         <button id="submitButton">Submit</button>
     </form> -->
-    <button id="austinButton">Austin, TX</button>
-    <button id="londonButton">London, UK</button>
-    <button id="losAngelesButton">Los Angeles, CA</button>
-    <button id="madridButton">Madrid, Spain</button>
-    <button id="miamiButton">Miami, FL</button>
-    <button id="newYorkButton">New York, NY</button>
-    <button id="parisButton">Paris, France</button>
-    <button id="philadelphiaButton">Philadelphia, PA</button>
-    <button id="portlandButton">Portland, OR</button>
-    <button id="saoPauloButton">Sao Paulo, Brazil</button>
-    <div id="weatherInfo">
-    </div>
+    <select id="location-list">
+        <option value="" disabled selected hidden id="location-placeholder">Pick a Location</option>
+        <option id="austinOption">Austin, TX</option>
+        <option id="londonOption">London, UK</option>
+        <option id="losAngelesOption">Los Angeles, CA</option>
+        <option id="madridOption">Madrid, Spain</option>
+        <option id="miamiOption">Miami, FL</option>
+        <option id="newYorkOption">New York, NY</option>
+        <option id="parisOption">Paris, France</option>
+        <option id="philadelphiaOption">Philadelphia, PA</option>
+        <option id="portlandOption">Portland, OR</option>
+        <option id="saoPauloOption">Sao Paulo, Brazil</option>
+    </select>
+    <div id="weatherInfo"></div>
     <script src="./index.js"></script>
 </body>
 </html>
