@@ -13,6 +13,7 @@
         <h1>Weather App</h1>
     </div>
     <h2>Enter a location following one of the following formats:</h2>
+    <h4 id="attribution">Powered by <a id="attributionLink" href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a></h4>
     <ul>
         <li>Latitude and Longitude (Decimal degree): "48.8567,2.3508"</li> 
         <li>City Name: "Paris"</li>
@@ -20,11 +21,11 @@
         <li>UK Postcode: "SW1"</li>
         <li>Canada Postal Code: "G2J"</li>
     </ul>
-    <!-- <form id="searchForm">
+    <form id="searchForm">
         <input placeholder="Location" name="query"></input>
         <button id="submitButton">Submit</button>
-    </form> -->
-    <select id="location-list">
+    </form>
+    <!-- <select id="location-list">
         <option value="" disabled selected hidden id="location-placeholder">Pick a Location</option>
         <option id="austinOption">Austin, TX</option>
         <option id="londonOption">London, UK</option>
@@ -36,7 +37,7 @@
         <option id="philadelphiaOption">Philadelphia, PA</option>
         <option id="portlandOption">Portland, OR</option>
         <option id="saoPauloOption">Sao Paulo, Brazil</option>
-    </select>
+    </select> -->
     <div id="weatherInfo"></div>
     <script src="./index.js"></script>
 </body>
