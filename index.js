@@ -11,7 +11,7 @@ const getWeather = async (id) => {
   try {
     // const res = await fetch(`./data/${id}.json`);
     const res = await fetch((
-      `https://api.weatherapi.com/v1/forecast.json?key=${process.env.KEY}&q=${id}&days=10&aqi=no&alerts=no`,
+      `https://api.weatherapi.com/v1/forecast.json?key=${KEY}&q=${id}&days=10&aqi=no&alerts=no`,
       options
       ));
     const data = await res.json();
