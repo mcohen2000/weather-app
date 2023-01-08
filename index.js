@@ -9,11 +9,11 @@ const options = {
 
 const getWeather = async (id) => {
   try {
-    // const res = await fetch(`./data/${id}.json`);
-    const res = await fetch((
-      `https://api.weatherapi.com/v1/forecast.json?key=${KEY}&q=${id}&days=10&aqi=no&alerts=no`,
-      options
-      ));
+    const res = await fetch(`./data/${id}.json`);
+    // const res = await fetch(
+    //   `https://api.weatherapi.com/v1/forecast.json?key=${process.env.KEY}&q=${id}&days=10&aqi=no&alerts=no`,
+    //   options
+    // );
     const data = await res.json();
     console.log("RESPONSE DATA: ", data);
     const nameDisplay = document.createElement("H2");
@@ -580,55 +580,55 @@ const getWeather = async (id) => {
     console.log(e);
   }
 };
-// const locationSelectList = document.getElementById("location-list");
-// locationSelectList.addEventListener("change", function (e) {
-//   console.log(e.target.value);
-//   weatherInfo.innerHTML = "";
-//   if (e.target.value === "Austin, TX"){
-//     getWeather("AustinTX");
-//   }
-//   if (e.target.value === "London, UK"){
-//     getWeather("LondonUK");
-//   }
-//   if (e.target.value === "Los Angeles, CA"){
-//     getWeather("LosAngelesCA");
-//   }
-//   if (e.target.value === "Madrid, Spain"){
-//     getWeather("MadridSpain");
-//   }
-//   if (e.target.value === "Miami, FL"){
-//     getWeather("MiamiFL");
-//   }
-//   if (e.target.value === "New York, NY"){
-//     getWeather("NewYorkNY");
-//   }
-//   if (e.target.value === "Paris, France"){
-//     getWeather("ParisFrance");
-//   }
-//   if (e.target.value === "Philadelphia, PA"){
-//     getWeather("PhiladelphiaPA");
-//   }
-//   if (e.target.value === "Portland, OR"){
-//     getWeather("PortlandOR");
-//   }
-//   if (e.target.value === "Sao Paulo, Brazil"){
-//     getWeather("SaoPauloBrazil");
-//   }
-// });
-searchForm.addEventListener("submit", function (e) {
-  e.preventDefault();
-  console.log(searchForm.elements.query.value);
+const locationSelectList = document.getElementById("location-list");
+locationSelectList.addEventListener("change", function (e) {
+  console.log(e.target.value);
   weatherInfo.innerHTML = "";
-  searchSubmitBtn.style.animation =
-    "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
-
-  // api using search form
-    getWeather(searchForm.elements.query.value);
-
-  // local json data
-  // getWeather("AustinTX");
-
-  setTimeout(() => {
-    searchSubmitBtn.style.animation = "";
-  }, 2000);
+  if (e.target.value === "Austin, TX"){
+    getWeather("AustinTX");
+  }
+  if (e.target.value === "London, UK"){
+    getWeather("LondonUK");
+  }
+  if (e.target.value === "Los Angeles, CA"){
+    getWeather("LosAngelesCA");
+  }
+  if (e.target.value === "Madrid, Spain"){
+    getWeather("MadridSpain");
+  }
+  if (e.target.value === "Miami, FL"){
+    getWeather("MiamiFL");
+  }
+  if (e.target.value === "New York, NY"){
+    getWeather("NewYorkNY");
+  }
+  if (e.target.value === "Paris, France"){
+    getWeather("ParisFrance");
+  }
+  if (e.target.value === "Philadelphia, PA"){
+    getWeather("PhiladelphiaPA");
+  }
+  if (e.target.value === "Portland, OR"){
+    getWeather("PortlandOR");
+  }
+  if (e.target.value === "Sao Paulo, Brazil"){
+    getWeather("SaoPauloBrazil");
+  }
 });
+// searchForm.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   console.log(searchForm.elements.query.value);
+//   weatherInfo.innerHTML = "";
+//   searchSubmitBtn.style.animation =
+//     "submitAnimation 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
+
+//   // api using search form
+//   getWeather(searchForm.elements.query.value);
+
+//   // local json data
+//   // getWeather("AustinTX");
+
+//   setTimeout(() => {
+//     searchSubmitBtn.style.animation = "";
+//   }, 2000);
+// });
