@@ -1,4 +1,4 @@
-﻿# weather-app
+﻿# Weather App
  - Built using data from weatherapi.com (Website no longer uses real-time data, but you can use real sample data from the dropdown selection).
 
 ![Top of Page and Current Data](https://user-images.githubusercontent.com/65527695/184239022-c91d6d8e-789d-480a-bd48-d21e828ee462.PNG)
